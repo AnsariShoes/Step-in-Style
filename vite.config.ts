@@ -4,7 +4,6 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/Step-in-Style/',
   server: {
     port: 5173,
     open: true,

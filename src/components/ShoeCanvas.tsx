@@ -4,7 +4,7 @@ import { useGLTF, Environment, ContactShadows, Float } from '@react-three/drei';
 import * as THREE from 'three';
 
 function ShoeModel() {
-  const modelPath = `${import.meta.env.BASE_URL}shoe.glb`;
+  const modelPath = `${import.meta.env.BASE_URL}futuristicsneaker3dmodel.glb`;
   const { scene } = useGLTF(modelPath);
   const shoeRef = useRef<THREE.Group>(null);
   const scrollY = useRef(0);
@@ -33,7 +33,7 @@ function ShoeModel() {
       const showcaseStart = vh * 0.8;
       const showcaseEnd = vh * 2.2;
       
-      let targetScale = isMobile ? 1.6 : 2.5;
+      let targetScale = isMobile ? 2.5 : 4.0;
       let targetPosX = isMobile ? 0 : 2;
       let targetPosY = isMobile ? 1 : 0;
       
@@ -54,7 +54,7 @@ function ShoeModel() {
         // We can use a parabola: 1 - Math.pow((progress * 2 - 1), 2) gives 0 at ends and 1 in middle
         const bump = 1 - Math.pow((progress * 2 - 1), 2); // 0 -> 1 -> 0
         
-        targetScale = (isMobile ? 1.6 : 2.5) + (bump * 2.5); // Peak scale is +2.5
+        targetScale = (isMobile ? 2.5 : 4.0) + (bump * 4.0); // Peak scale is +4.0
         targetPosX = targetPosX * (1 - bump); // Move towards center
         targetPosY = targetPosY * (1 - bump); // Move towards center
         targetRotationX = 0.2 * bump; // tilt up when enlarged
@@ -71,7 +71,7 @@ function ShoeModel() {
 
   return (
     <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
-      <group ref={shoeRef} scale={isMobile ? 1.6 : 2.5} position={isMobile ? [0, 1, 0] : [2, 0, 0]}>
+      <group ref={shoeRef} scale={isMobile ? 2.5 : 4.0} position={isMobile ? [0, 1, 0] : [2, 0, 0]}>
         <primitive object={scene} />
       </group>
     </Float>
@@ -124,4 +124,4 @@ export default function ShoeCanvas() {
 
 // Note: Preloading with BASE_URL outside component scope can be tricky, 
 // but we'll try to provide it if available.
-useGLTF.preload(`${import.meta.env.BASE_URL || '/'}shoe.glb`);
+useGLTF.preload(`${import.meta.env.BASE_URL || '/'}futuristicsneaker3dmodel.glb`);
