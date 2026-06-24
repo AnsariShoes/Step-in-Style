@@ -1,1 +1,0 @@
-import{l as e}from"./@firebase-CpLSAOhe.js";e(`firebase`,`12.15.0`,`app`);
